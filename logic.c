@@ -1,4 +1,5 @@
 #include "rsa.h"
+
 /**
 *factorizer - factorises an number.
 *@num: Number to be factorized
@@ -8,8 +9,8 @@
 
 void factorizer(char *num)
 {
-	int i,  n, flag = 0;
-
+	int i, flag = 0;
+	long int n;
 	n = atoi(num);
 	if (n != 0)
 	{
@@ -19,27 +20,33 @@ void factorizer(char *num)
 			if (flag == 1)
 				return;
 		}
-		printf("%d has no factors\n", n);
+		printf("%ld has no rsa factors\n", n);
 		return;
 	}
 	return;
 }
+/**
+*second_loop - Inner loop
+*@i: Integer counter fron first loop
+*@n: Number being analysed
+*Return: An flag
+*/
 int second_loop(int i, int n)
 {
 	int x, flag;
 
 	flag = 0;
-	for (x = 1; x < n; x++)
+	for (x = 0; x < n; x++)
 	{
-/*		if (check(i) && check(x))
-		{*/
-		if ((i * x) == n)
+		if (check(i) && check(x))
 		{
-			printf("%i = %i*%i\n", n, i, x);
-			flag = 1;
-			return(flag);
+			if ((i * x) == n)
+			{
+				printf("%i = %i*%i\n", n, i, x);
+				flag = 1;
+				return(flag);
+			}
 		}
-/*		} */
 	}
 	return(flag);
 }
@@ -47,7 +54,7 @@ int second_loop(int i, int n)
 /**
 *check - checks if a number is a prime number
 *factor: number being checked
-*Return: Nothing
+*Return: A Boolean
 */
 bool check(int factor)
 {

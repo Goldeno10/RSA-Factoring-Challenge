@@ -35,7 +35,6 @@ void file_op(char *filename)
 		factorizer(tokens[0]);
 	}
 	free(lineptr);
-	free_tok(tokens)
 	fclose(stream);
 	return;
 }
@@ -46,6 +45,6 @@ void free_tok(char **tok)
 	while(tok[i])
 	{
 		free(tok[i]);
-		i++
+		i++;
 	}
 }
